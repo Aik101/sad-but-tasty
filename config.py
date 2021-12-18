@@ -4,6 +4,7 @@ env = Env()
 env.read_env()
 
 bot_token = env.str("bot_token")
+localhost = env.str("localhost")
 
 # pg_user = env.str("pg_user")
 # pg_password = env.str("pg_password")
