@@ -11,7 +11,7 @@ import subprocess
 import time
 
 
-@dp.callback_query_handler(text="guess_1_callback", state=["*"])
+@dp.callback_query_handler(text="guess_1_callback", state=SinglePlayerStates.person_choice)
 async def confirm_person_choice_1(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
     await delete_2_messages(call.message.chat.id, await state.get_data())
@@ -21,7 +21,7 @@ async def confirm_person_choice_1(call: types.CallbackQuery, state: FSMContext):
     await debot_chooses(localhost, call, state)
 
 
-@dp.callback_query_handler(text="guess_2_callback", state=["*"])
+@dp.callback_query_handler(text="guess_2_callback", state=SinglePlayerStates.person_choice)
 async def confirm_person_choice_2(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
     await delete_2_messages(call.message.chat.id, await state.get_data())
@@ -31,7 +31,7 @@ async def confirm_person_choice_2(call: types.CallbackQuery, state: FSMContext):
     await debot_chooses(localhost, call, state)
 
 
-@dp.callback_query_handler(text="guess_3_callback", state=["*"])
+@dp.callback_query_handler(text="guess_3_callback", state=SinglePlayerStates.person_choice)
 async def confirm_person_choice_3(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
     await delete_2_messages(call.message.chat.id, await state.get_data())
@@ -41,7 +41,7 @@ async def confirm_person_choice_3(call: types.CallbackQuery, state: FSMContext):
     await debot_chooses(localhost, call, state)
 
 
-@dp.callback_query_handler(text="guess_4_callback", state=["*"])
+@dp.callback_query_handler(text="guess_4_callback", state=SinglePlayerStates.person_choice)
 async def confirm_person_choice_4(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
     await delete_2_messages(call.message.chat.id, await state.get_data())
@@ -51,7 +51,7 @@ async def confirm_person_choice_4(call: types.CallbackQuery, state: FSMContext):
     await debot_chooses(localhost, call, state)
 
 
-@dp.callback_query_handler(text="guess_5_callback", state=["*"])
+@dp.callback_query_handler(text="guess_5_callback", state=SinglePlayerStates.person_choice)
 async def confirm_person_choice_5(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
     await delete_2_messages(call.message.chat.id, await state.get_data())
@@ -61,7 +61,7 @@ async def confirm_person_choice_5(call: types.CallbackQuery, state: FSMContext):
     await debot_chooses(localhost, call, state)
 
 
-@dp.callback_query_handler(text="guess_6_callback", state=["*"])
+@dp.callback_query_handler(text="guess_6_callback", state=SinglePlayerStates.person_choice)
 async def confirm_person_choice_6(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
     await delete_2_messages(call.message.chat.id, await state.get_data())
