@@ -4,6 +4,8 @@ from aiogram.dispatcher import FSMContext
 from states.game_states import SinglePlayerStates
 from loader import dp
 from config import localhost
+from utils.interface_utils import delete_2_messages
+from keyboards.start_keyboard import get_start_keyboard
 
 import subprocess
 import time
@@ -12,6 +14,7 @@ import time
 @dp.callback_query_handler(text="guess_1_callback", state=["*"])
 async def confirm_person_choice_1(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
+    await delete_2_messages(call.message.chat.id, await state.get_data())
     await call.message.answer(text="Вы выбрали число <b>1</b>")
     await state.update_data(person_choice=1)
     await SinglePlayerStates.debot_choice.set()
@@ -21,6 +24,7 @@ async def confirm_person_choice_1(call: types.CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text="guess_2_callback", state=["*"])
 async def confirm_person_choice_2(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
+    await delete_2_messages(call.message.chat.id, await state.get_data())
     await call.message.answer(text="Вы выбрали число <b>2</b>")
     await state.update_data(person_choice=2)
     await SinglePlayerStates.debot_choice.set()
@@ -30,6 +34,7 @@ async def confirm_person_choice_2(call: types.CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text="guess_3_callback", state=["*"])
 async def confirm_person_choice_3(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
+    await delete_2_messages(call.message.chat.id, await state.get_data())
     await call.message.answer(text="Вы выбрали число <b>3</b>")
     await state.update_data(person_choice=3)
     await SinglePlayerStates.debot_choice.set()
@@ -39,6 +44,7 @@ async def confirm_person_choice_3(call: types.CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text="guess_4_callback", state=["*"])
 async def confirm_person_choice_4(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
+    await delete_2_messages(call.message.chat.id, await state.get_data())
     await call.message.answer(text="Вы выбрали число <b>4</b>")
     await state.update_data(person_choice=4)
     await SinglePlayerStates.debot_choice.set()
@@ -48,6 +54,7 @@ async def confirm_person_choice_4(call: types.CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text="guess_5_callback", state=["*"])
 async def confirm_person_choice_5(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
+    await delete_2_messages(call.message.chat.id, await state.get_data())
     await call.message.answer(text="Вы выбрали число <b>5</b>")
     await state.update_data(person_choice=5)
     await SinglePlayerStates.debot_choice.set()
@@ -57,6 +64,7 @@ async def confirm_person_choice_5(call: types.CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text="guess_6_callback", state=["*"])
 async def confirm_person_choice_6(call: types.CallbackQuery, state: FSMContext):
     await state.reset_state(False)
+    await delete_2_messages(call.message.chat.id, await state.get_data())
     await call.message.answer(text="Вы выбрали число <b>6</b>")
     await state.update_data(person_choice=6)
     await SinglePlayerStates.debot_choice.set()
@@ -109,5 +117,6 @@ async def compute_winner(call: types.CallbackQuery, state: FSMContext):
     else:
         answer = {1: "🗿", 2: f"Ничья!"}
 
-    await call.message.answer(text=answer.get(1))
+    keyboard = await get_start_keyboard()
+    await call.message.answer(text=answer.get(1), reply_markup=keyboard)
     await call.message.answer(text=answer.get(2))

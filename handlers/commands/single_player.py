@@ -3,12 +3,13 @@ from aiogram.dispatcher import FSMContext
 
 from keyboards.guess_number_keyboard import get_guess_number_keyboard
 from loader import dp
+# from utils.interface_utils import delete_6_messages
 
 
 @dp.message_handler(text=["🤖 Играть с ДеБотом"], state=["*"])
 async def start_single_player(message: types.Message, state: FSMContext):
     await state.reset_state(False)
-
+    await message.delete()
     keyboard = await get_guess_number_keyboard()
 
     first_message = await message.answer("🤔")
@@ -16,5 +17,4 @@ async def start_single_player(message: types.Message, state: FSMContext):
                                           "<b>Выберите число ⤵️</b>",
                                           reply_markup=keyboard)
 
-    await state.update_data(first_message=first_message.message_id,
-                            second_message=second_message.message_id)
+    await state.update_data(messages_two={0: first_message.message_id, 1: second_message.message_id})
