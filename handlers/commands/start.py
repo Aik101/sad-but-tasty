@@ -14,7 +14,7 @@ async def command_start(message: types.Message, state: FSMContext):
     first_message = await message.answer("🤖", reply_markup=keyboard)
     second_message = await message.answer("Добро пожаловать в <b>PlayerDeBot</b>\n\n"
                                           "Здесь вы можете сыграть в кубик с настоящим "
-                                          "децентрализованным ботом блокчейна Free TON\n\n"
+                                          "децентрализованным ботом блокчейна Everscale\n\n"
                                           "Или же с другим человеком, но с участием ДеБота в качестве судьи")
 
     await state.update_data(messages_two={0: first_message.message_id, 1: second_message.message_id})

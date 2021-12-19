@@ -1,4 +1,5 @@
 __pycache__/
+.idea/
 debot/log.log
 debot/debotPlayer.keys.json
 
